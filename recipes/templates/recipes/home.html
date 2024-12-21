@@ -1,0 +1,273 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт рецептов</title>
+</head>
+<body>
+    <h1>Рецепты</h1>
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <h2>{{ recipe.title }}</h2>
+                <p><strong>Автор:</strong> {{ recipe.author }}</p>
+                <p><strong>Время приготовления:</strong> {{ recipe.cooking_time }} минут</p>
+                <p>{{ recipe.description }}</p>
+                {% if recipe.image %}
+                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" width="300">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница с рецептами</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .recipe {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .recipe h2 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        .ingredients, .instructions {
+            margin: 10px 0;
+        }
+        .add-recipe {
+            margin-top: 30px;
+        }
+        .add-recipe form {
+            display: flex;
+            flex-direction: column;
+        }
+        .add-recipe label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .add-recipe input, .add-recipe textarea {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .add-recipe button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-recipe button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Главная страница с рецептами</h1>
+
+    <!-- Секция с рецептами -->
+    <div id="recipes">
+        <div class="recipe">
+            <h2>Рубленые котлеты из свинины</h2>
+            <div class="ingredients">
+                <strong>Ингредиенты:</strong>
+                <ul>
+                    <li>Свинина (у меня лопатка) 650 гр</li>
+                    <li>Яйца 2 шт</li>
+                    <li>Майонез 3 ст. л</li>
+                    <li>Крахмал кукурузный 3 ст. л</li>
+                    <li>Соль по вкусу</li>
+                    <li>Перец по вкусу</li>
+                    <li>Растительное масло (для жарки)</li>
+                </ul>
+            </div>
+            <div class="instructions">
+                <strong>Инструкция приготовления:</strong>
+                <ol>
+                    <li>Мясо нарубить на мелкие кубики и уложить в миску.</li>
+                    <li>Добавить яйца, крахмал, майонез, соль и перец. Смешать до объединения ингредиентов.</li>
+                    <li>Обжарить в разогретой сковороде до золотистости.</li>
+                </ol>
+            </div>
+            <div class="recipe">
+                <h2>ПП пряный тыквенный мусс на сливках</h2>
+                <div class="ingredients">
+                    <strong>Ингредиенты:</strong>
+                    <ul>
+                        <li>Тыквенное пюре 190 гр</li>
+                        <li>Сливки 10% холодные 60 мл</li>
+                        <li>Желатин (сила 160 блюм) 6 гр</li>
+                        <li>Подсластитель по вкусу</li>
+                        <li>Порошок имбиря щепотка</li>
+                        <li>Корица щепотка</li>
+                    </ul>
+                </div>
+                <div class="instructions">
+                    <strong>Инструкция приготовления:</strong>
+                    <ol>
+                        <li>Желатин замочить в холодных сливках и оставить набухать.</li>
+                        <li>В ёмкости для взбивания соединить тыквенное пюре, подсластитель, 
+                            пряности и подогретый в микроволновке желатин (мне хватает буквально 8 секунд для того, чтобы его растопить).
+                            Нельзя допустить, чтобы желатин закипел, иначе он потеряет свои желирующие свойства.
+                            Количество пряностей можете регулировать по своему вкусу.
+                            Пробить всё погружным блендером, опуская его вниз и поднимая вверх. Масса станет однородной и более воздушной.</li>
+                        <li>Перелить массу в стакан или креманку и убрать в холодильник до полного застывания, 
+                            это может занять 2-3 часа в зависимости от размера вашей формочки. Смотрите по состоянию мусса, он должен быть стабильным и не должен сильно трястись при покачивании.</li>
+                    </ol>
+                </div>
+                <div class="recipe">
+                    <h2>Печенье-трубочки с варёной сгущёнкой на простокваше</h2>
+                    <div class="ingredients">
+                        <strong>Ингредиенты:</strong>
+                        <ul>
+                            <li>Мука пшеничная 700 гр</li>
+                            <li>Варёная сгущёнка 380 гр</li>
+                            <li>ЖМасло сливочное холодное 350 гр</li>
+                            <li>Простокваша термостатная 300 гр</li>
+                            <li>Сахар 3 ст. л</li>
+                            <li>Разрыхлитель 2 ч. л</li>
+                            <li>Щепотка соли</li>
+                            <li>Ванилин на кончике ножа</li>
+                        </ul>
+                    </div>
+                    <div class="instructions">
+                        <strong>Инструкция приготовления:</strong>
+                        <ol>
+                            <li>В миске смешать муку с сахаром, солью, ванилином и разрыхлителем.</li>
+                            <li>Сливочное масло нарезать кубиком, добавить к муке
+                                и всё перетереть в крошку с помощью рук.</li>
+                            <li>Далее добавить простоквашу
+                                и аккуратно смешать всё вилкой, после чего собрать тесто в плотный шар.</li>
+                        </ol>
+                    </div>
+                    <div class="recipe">
+                        <h2>Холодец из свинины и курицы с желатином</h2>
+                        <div class="ingredients">
+                            <strong>Ингредиенты:</strong>
+                            <ul>
+                                <li>Рулька свиная 800 гр</li>
+                                <li>Окорок куриный 300 гр</li>
+                                <li>Лук репчатый 1 шт</li>
+                                <li>Чеснок 6 зубчиков (в холодец) + 2 зубчика (в бульон)</li>
+                                <li>Желатин (сила 200 блюм) 28 гр</li>
+                                <li>Лавровый лист 2 шт</li>
+                                <li>Соль по вкусу</li>
+                                <li>Перец по вкусу</li>
+                            </ul>
+                        </div>
+                        <div class="instructions">
+                            <strong>Инструкция приготовления:</strong>
+                            <ol>
+                                <li>Рульку и окорок залить холодной водой, довести до кипения, убавить огонь до минимального и варить 2,5 часа, периодически снимая пену.</li>
+                                <li>Спустя 2,5 часа добавить в бульон 2 зубчика чеснока, очищенную луковицу, лавровый лист, посолить, поперчить по вкусу и варить еще 1,5 часа.</li>
+                                <li>Желатин замочить холодной водой и оставить разбухать.</li>
+                                <li>Мясо отделить от костей и разобрать на волокна, затем разложить по формочкам.</li>
+                                <li>Чеснок пропустить через пресс и равномерно распределить поверх мяса.</li>
+                                <li>Бульон процедить через сито или марлю и распустить в нём желатин. Затем разлить его половником по формам. Дать холодцу остыть при комнатной температуре, после чего убрать в холодильник для застывания.</li>
+                            </ol>
+                        </div>
+                        <div class="recipe">
+                            <h2>Салат из курицы с ананасами, кукурузой и яйцом</h2>
+                            <div class="ingredients">
+                                <strong>Ингредиенты:</strong>
+                                <ul>
+                                    <li>Куриное филе 500 гр</li>
+                                    <li>Ананасы консервированные 440 гр (вес в чистом виде)</li>
+                                    <li>Кукуруза консервированная 1 банка</li>
+                                    <li>Яйца 4 шт</li>
+                                    <li>Майонез 4 ст. л</li>
+                                    <li>Чеснок 3 зубчика</li>
+                                    <li>Сок лимона 2 ч. л</li>
+                                </ul>
+                            </div>
+                            <div class="instructions">
+                                <strong>Инструкция приготовления:</strong>
+                                <ol>
+                                    <li>Куриное филе отварить в подсоленной воде до полной готовности, затем остудить.</li>
+                                    <li>Яйца отварить вкрутую, затем поместить их в ледяную воду для быстрого остывания.</li>
+                                    <li>Остывшее филе нарезать на мелкие кубики.</li>
+                                    <li>С ананасов слить сироп и нарезать их на кубики аналогичного размера.</li>
+                                    <li>Яйца мелко порубить ножом или измельчить через яйцерезку.</li>
+                                    <li>С кукурузы слить жидкость, чеснок пропустить через пресс и добавить в общую миску, 
+                                        далее заправить салат майонезом и соком лимона. При необходимости поперчить и досолить,
+                                        После чего хорошенько смешать.</li>
+                                </ol>
+                            </div>
+        </div>
+        <!-- Здесь добавим другие рецепты аналогичным образом -->
+    </div>
+
+    <!-- Окно добавления нового рецепта -->
+    <div class="add-recipe">
+        <h2>Добавить новый рецепт</h2>
+        <form id="addRecipeForm">
+            <label for="title">Название рецепта:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="ingredients">Ингредиенты:</label>
+            <textarea id="ingredients" name="ingredients" rows="5" required></textarea>
+
+            <label for="instructions">Инструкция приготовления:</label>
+            <textarea id="instructions" name="instructions" rows="5" required></textarea>
+
+            <button type="submit">Добавить рецепт</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addRecipeForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const instructions = document.getElementById('instructions').value;
+
+            const recipeDiv = document.createElement('div');
+            recipeDiv.className = 'recipe';
+
+            recipeDiv.innerHTML = `
+                <h2>${title}</h2>
+                <div class="ingredients">
+                    <strong>Ингредиенты:</strong>
+                    <ul>
+                        ${ingredients.split('\n').map(ing => `<li>${ing}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="instructions">
+                    <strong>Инструкция приготовления:</strong>
+                    <ol>
+                        ${instructions.split('\n').map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                </div>
+            `;
+
+            document.getElementById('recipes').appendChild(recipeDiv);
+
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
